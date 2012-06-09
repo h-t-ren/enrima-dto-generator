@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e="http://eu.enrima.gui"
+    targetNamespace="http://eu.enrima.gui" elementFormDefault="qualified"> 
+
+    
+    <!-- for generating operations -->
+    <xs:element name="getEnvironmentParametersRequest">
+   <xs:complexType>
+       <xs:sequence>
+           <xs:element name="buildingId" type="xs:int" />
+       </xs:sequence>
+   </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getEnvironmentParametersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="environmentParameter" type="e:environmentParameter" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+
+    <!--schema-->
+    <xs:complexType name="environmentParameter">
+        <xs:sequence>
+            <xs:element name="time" type="xs:int" />
+            <xs:element name="solarInsolation"  type="xs:double"/>
+            <xs:element name="externalTemperature"  type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="internalBuildingParameter">
+        <xs:sequence>
+            <xs:element name="time" type="xs:int" />
+            <xs:element name="electricityEndUse"  type="xs:double"/>
+            <xs:element name="internalLoad"  type="xs:double"/>
+            <xs:element name="lowerTemperatureLimit"  type="xs:double"/>
+            <xs:element name="upperTemperatureLimit"  type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="building">
+        <xs:sequence>
+            <xs:element name="volume" type="xs:int" />
+            <xs:element name="name"  type="xs:string"/>
+            <xs:element name="floorArea"  type="xs:double"/>
+            <xs:element name="wallArea"  type="xs:double"/>
+            <xs:element name="glassArea"  type="xs:double"/>
+            <xs:element name="heatTransferCoefficient"  type="xs:double"/>
+            <!-- 1:M relation -->
+            <xs:element name="environmentParameterList"  type="e:environmentParameter" maxOccurs="unbounded"/>
+            <!-- 1:M relation -->
+            <xs:element name="internalBuildingParameterList"  type="e:internalBuildingParameter" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="energyType">
+        <xs:sequence>
+            <xs:element name="energyType" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="demand">
+        <xs:sequence>
+            <xs:element name="time" type="xs:int" />
+            <xs:element name="energyType"  type="e:energyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="marketPrice">
+        <xs:sequence>
+            <xs:element name="time" type="xs:int" />
+            <xs:element name="price"  type="xs:double"/>
+            <xs:element name="energyType"  type="e:energyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="energyMarket">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="selling"  type="xs:boolean"/>
+            <!-- 1:M relation -->
+            <xs:element name="energyMarket"  type="e:marketPrice" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<xs:complexType name="heatSystem">
+    <xs:sequence>
+        <xs:element name="supplyTemperature" type="xs:double" />
+        <xs:element name="heatPumpEfficiency" type="xs:double" />
+        <xs:element name="radiatorC1" type="xs:double" />
+        <xs:element name="radiatorC2" type="xs:double" />
+        <xs:element name="radiatorS1" type="xs:double" />
+        <xs:element name="radiatorS2" type="xs:double" />
+        <xs:element name="maxFlow" type="xs:double" />
+        <xs:element name="radiatorCoefficient" type="xs:double" />
+        <xs:element name="supplyTemp" type="xs:double" />
+    </xs:sequence>
+</xs:complexType>
+ 
+    <xs:complexType name="HVACSystem">
+        <xs:sequence>
+            <xs:element name="maxFlow" type="xs:double" />
+            <xs:element name="lowerExtAirLimit" type="xs:double" />
+            <xs:element name="upperExtAirLimit" type="xs:double" />
+            <xs:element name="minFlow" type="xs:double" />
+            <xs:element name="elecPumpRequiremnt" type="xs:double" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="results">
+        <xs:sequence>
+            <xs:element name="time" type="xs:int" />
+            <xs:element name="temperature" type="xs:double" />
+            <xs:element name="waterFlow" type="xs:double" />
+            <xs:element name="HVACAirFlow" type="xs:double" />
+            <xs:element name="externalAirUsed" type="xs:double" />
+            <xs:element name="radiatorHeat" type="xs:double" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    
+    
+
+</xs:schema>
