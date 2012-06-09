@@ -1,27 +1,31 @@
 enrima-dto-generator
 ====================
 
-h2. Develepment environments:
+Develepment environments:
+------------------------
 
 * JDK 1.6 or above
 * Maven 3.0.0 or above
 * Git (optional)
 
-h2. Download the example:
+Download the project:
+------------------------
 
 * git clone git://github.com/h-t-ren/enrima-dto-generator.git
 * or https://github.com/h-t-ren/enrima-dto-generator and click "zip" button 
 
-h2. Compile and install:
+Compile and install:
+------------------------
 
 * cd enrima-dto-generator
 * mvn clean install
 
 
 
-h2. Importance files:
+Importance files:
+====================
 
-Tree structure:
+* Tree structure:
 
 <pre>
 ├── pom.xml
@@ -59,13 +63,13 @@ Tree structure:
 </pre>
 
 
-* dependence management and deploy file
+* Dependence management and deploy file
  - pom.xml
 
-* source files:
+* Source files:
    
  - src/enrima-gui.xsd (the schema based on )
  - src/enrima-gui.wsdl (include schema and operations/messages/binding/port definition)
 
-* generated files (after running the command: mvn clean install ):
+* Generated files (after running the command: mvn clean install ):
  - target/jaxws/wsimport/java/en/enrima/gui/dto/*.java
