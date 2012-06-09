@@ -22,7 +22,7 @@ Compile and install:
 
 
 
-Importance files:
+Files:
 ====================
 
 * Tree structure:
