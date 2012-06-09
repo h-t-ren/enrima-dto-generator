@@ -68,7 +68,7 @@ Importance files:
 
 * Source files:
    
- - src/enrima-gui.xsd (the schema based on )
+ - src/enrima-gui.xsd (the schema)
  - src/enrima-gui.wsdl (include schema and operations/messages/binding/port definition)
 
 * Generated files (after running the command: mvn clean install ):
