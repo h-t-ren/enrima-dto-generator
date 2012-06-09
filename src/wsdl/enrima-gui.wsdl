@@ -44,7 +44,7 @@
 	</wsdl:binding>
 	<wsdl:service name="enrimaResourceService">
 		<wsdl:port binding="tns:enrimaResourceSoap11" name="enrimaResourceSoap11">
-			<soap:address location="http://localhost:8080/device-ws1/enrimaService/" />
+			<soap:address location="http://localhost:8080/enrima/enrimaService/" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
